@@ -3,6 +3,8 @@ echo "Enter the port number for the first WAN: "
 read port1
 echo "Enter the port number for the second WAN: "
 read port2
+echo "Enter the interface where MS messages are recieved and generated: "
+read ms_if
 echo "Enter the address of the Map Server: "
 read ms_addr
 echo "Enter the password of the Map Server: "
@@ -21,7 +23,7 @@ sh ./network.sh $port1 $port2
 # TODO: Reload network (/etc/init.d/network)
 
 # oor.sh configures OOR to work with the given configuration
-sh ./oor.sh $ms_addr $ms_pass $mr_addr $eid_addr $eid_if
+sh ./oor.sh $ms_if $eid_addr $ms_pass $mr_addr $ms_addr $eid_if
 
 # firewall.sh configures the firewall to allow multihoming and OOR to work
 sh ./firewall.sh
