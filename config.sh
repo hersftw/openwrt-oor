@@ -18,12 +18,17 @@ read eid_if
 echo "Enter the PeTR (?)"
 read petr
 
+sh prova_oor.sh $port1
+
 # network.sh enables and configures multihoming on the device
-sh ./network.sh $port1 $port2
+#sh ./network.sh $port1 $port2
 # TODO: Reload network (/etc/init.d/network)
 
 # oor.sh configures OOR to work with the given configuration
-sh ./oor.sh $ms_if $eid_addr $ms_pass $mr_addr $ms_addr $eid_if
+#sh ./oor.sh $ms_if $eid_addr $ms_pass $mr_addr $ms_addr $eid_if
 
 # firewall.sh configures the firewall to allow multihoming and OOR to work
-sh ./firewall.sh
+#sh ./firewall.sh
+
+
+
