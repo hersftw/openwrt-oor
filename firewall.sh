@@ -1,6 +1,10 @@
 # This script configures the firewall of OpenWrt to enable the use of OOR 
 # and LISP. We must allow traffic in ports 4341 and 4342, as well as forwarding in 4341.
 
+# First we will create a backup for the firewall file
+cp /etc/config/firewall /etc/config/firewall_backup
+
+# Then we will configure the required ports and interfaces on the firewall configuration file
 uci add firewall forwarding
 uci set firewall.@forwarding[-1].src='wan'
 uci set firewall.@forwarding[-1].dest='lan'
@@ -43,4 +47,5 @@ uci set firewall.@rule[-1].proto='udp'
 uci set firewall.@rule[-1].src_port='4341'
 uci set firewall.@rule[-1].target='ACCEPT'
 
+# Finally the firewall service must be restarted
 /etc/init.d/firewall restart
