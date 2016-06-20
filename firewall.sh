@@ -41,11 +41,7 @@ uci set firewall.@rule[-1].proto='udp'
 uci set firewall.@rule[-1].dest_port='4341:4342'
 uci set firewall.@rule[-1].target='ACCEPT'
 
-uci add firewall rule
-uci set firewall.@rule[-1].name='Allow-4341-Forwarding'
-uci set firewall.@rule[-1].proto='udp'
-uci set firewall.@rule[-1].src_port='4341'
-uci set firewall.@rule[-1].target='ACCEPT'
+uci commit firewall
 
 # Finally the firewall service must be restarted
 /etc/init.d/firewall restart
