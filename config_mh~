@@ -2,7 +2,7 @@
 #sh /scripts/config.sh
 FLAG="/scripts/firstboot.log"
 if [ ! -f $FLAG ]; then
-	sh /scripts/config.sh
+	touch /root/coso
 	touch $FLAG
 fi
 
