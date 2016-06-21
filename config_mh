@@ -1,0 +1,8 @@
+#!/bin/sh
+#sh /scripts/config.sh
+FLAG="/scripts/firstboot.log"
+if [ ! -f $FLAG ]; then
+	touch /root/coso
+	touch $FLAG
+fi
+

@@ -1,5 +1,3 @@
-# lucidir/model/cbi/oor/model-cbi-oor.lua
-
 m = Map("oor", "Network") -- We want to edit the uci config file /etc/config/lispd
 
 s = m:section(TypedSection, "map-resolver", translate("Map Resolver"))
