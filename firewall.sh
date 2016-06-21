@@ -4,6 +4,14 @@
 # First we will create a backup for the firewall file
 cp /etc/config/firewall /etc/config/firewall_backup
 
+# After that we create a zone for the new WAN interface
+uci add firewall zone
+uci set firewall.@zone[-1].name='lan2'
+uci set firewall.@zone[-1].network='lan2'
+uci set firewall.@zone[-1].input='ACCEPT'
+uci set firewall.@zone[-1].output='ACCEPT'
+uci set firewall.@zone[-1].forward='ACCEPT'
+
 # Then we will configure the required ports and interfaces on the firewall configuration file
 uci add firewall forwarding
 uci set firewall.@forwarding[-1].src='wan'
@@ -39,6 +47,12 @@ uci add firewall rule
 uci set firewall.@rule[-1].name='Allow-4341-Output'
 uci set firewall.@rule[-1].proto='udp'
 uci set firewall.@rule[-1].dest_port='4341:4342'
+uci set firewall.@rule[-1].target='ACCEPT'
+
+uci add firewall rule
+uci set firewall.@rule[-1].name='Allow-4341-Forwarding'
+uci set firewall.@rule[-1].proto='udp'
+uci set firewall.@rule[-1].src_port='4341'
 uci set firewall.@rule[-1].target='ACCEPT'
 
 uci commit firewall
