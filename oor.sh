@@ -28,3 +28,7 @@ uci set oor.@rloc-iface[-1].interface='eth0.2'
 uci set oor.@rloc-iface[-1].ip_version='4'
 uci set oor.@rloc-iface[-1].priority='1'
 uci set oor.@rloc-iface[-1].weight='100'
+
+uci commit oor
+
+/etc/init.d/oor reload
