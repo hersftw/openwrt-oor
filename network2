@@ -29,7 +29,7 @@ config interface 'wan6'
 	option proto 'dhcpv6'
 
 config interface 'lan2'
-	option ifname 'eth1.2'
+	option ifname 'eth1.3'
 	option proto 'static'
 	option ipaddr '192.168.2.1'
 	option netmask '255.255.255.0'
@@ -43,10 +43,18 @@ config switch
 config switch_vlan 'wan2'
 	option device 'switch0'
 	option vlan '2'
-	option ports '3 6t'
+	option vid '2'
+	option ports '4 5'
 
 config switch_vlan 'lans'
 	option device 'switch0'
 	option vlan '1'
 	option ports '0 1 2 6t'
+	option vid '1'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '3'
+	option vid '3'
+	option ports '3 6t'
 
