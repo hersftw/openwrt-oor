@@ -40,4 +40,3 @@ config rloc-address
 	option address '192.168.3.1'
 	option priority '1'
 	option weight '100'
-
