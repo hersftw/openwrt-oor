@@ -6,12 +6,21 @@ cp /etc/config/network /etc/config/network_backup
 
 # This sets a new VLAN that will act as a second WAN interface
 uci set network.lan2='interface'
-uci set network.lan2.ifname='eth2'
+uci set network.lan2.ifname='eth1.3'
 uci set network.lan2.proto='dhcp'
 uci set network.lan2.metric='200'
 
+# This lets the LAN interface act as a VLAN
+uci set network.lan.ifname='eth1.1'
+
 # We set a diffreent metric for the WAN interface
 uci set network.wan.metric='100'
+
+# This enables VLANs in the internal switch
+uci add network switch
+uci set network.@switch[-1].name='switch0'
+uci set network.@switch[-1].reset='1'
+uci set network.@switch[-1].enable_vlan='1'
 
 # Here we assign the ports that will act as the LAN interfaces
 uci set network.lans='switch_vlan'
