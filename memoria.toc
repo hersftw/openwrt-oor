@@ -7,13 +7,13 @@
 \contentsline {paragraph}{Equip d\IeC {\textquoteright }OOR}{2}
 \contentsline {paragraph}{Cisco Systems}{2}
 \contentsline {paragraph}{Usuari final}{2}
-\contentsline {subsection}{\numberline {1.2}Estat de l'art}{2}
-\contentsline {subsubsection}{\numberline {1.2.1}Multihoming}{2}
+\contentsline {subsection}{\numberline {1.2}Estat de l'art}{3}
+\contentsline {subsubsection}{\numberline {1.2.1}Multihoming}{3}
 \contentsline {subsubsection}{\numberline {1.2.2}LISP i OOR}{3}
 \contentsline {subsubsection}{\numberline {1.2.3}OpenWrt}{5}
 \contentsline {subsection}{\numberline {1.3}Abast del projecte}{5}
 \contentsline {subsubsection}{\numberline {1.3.1}Objectius}{5}
-\contentsline {subsubsection}{\numberline {1.3.2}Possibles obstacles i solucions}{5}
+\contentsline {subsubsection}{\numberline {1.3.2}Possibles obstacles i solucions}{6}
 \contentsline {subsection}{\numberline {1.4}Metodologia}{6}
 \contentsline {subsubsection}{\numberline {1.4.1}M\IeC {\`e}tode de treball}{6}
 \contentsline {subsubsection}{\numberline {1.4.2}Eines de seguiment}{6}
@@ -24,24 +24,24 @@
 \contentsline {subsubsection}{\numberline {2.1.2}Cerca del model de router}{7}
 \contentsline {paragraph}{Compatible amb la \IeC {\'u}ltima versi\IeC {\'o} d\IeC {\textquoteright }OpenWrt}{7}
 \contentsline {paragraph}{Disponible internacionalment}{7}
-\contentsline {paragraph}{Compatible amb VLANs}{7}
-\contentsline {paragraph}{Especificacions adequades}{7}
-\contentsline {subsubsection}{\numberline {2.1.3}Familiaritzaci\IeC {\'o} amb el sistema OpenWrt}{7}
+\contentsline {paragraph}{Compatible amb VLANs}{8}
+\contentsline {paragraph}{Especificacions adequades}{8}
+\contentsline {subsubsection}{\numberline {2.1.3}Familiaritzaci\IeC {\'o} amb OpenWrt}{8}
 \contentsline {subsubsection}{\numberline {2.1.4}Familiaritzaci\IeC {\'o} amb LISP i OOR}{8}
 \contentsline {subsubsection}{\numberline {2.1.5}Configuraci\IeC {\'o} del multihoming}{8}
 \contentsline {subsubsection}{\numberline {2.1.6}Automatitzaci\IeC {\'o} del multihoming}{8}
-\contentsline {subsubsection}{\numberline {2.1.7}Adaptaci\IeC {\'o} de la interficie d\IeC {\textquoteright }OpenWrt}{8}
-\contentsline {subsubsection}{\numberline {2.1.8}Documentaci\IeC {\'o} i preparaci\IeC {\'o} de la defensa}{8}
+\contentsline {subsubsection}{\numberline {2.1.7}Adaptaci\IeC {\'o} de la interf\IeC {\'\i }cie}{9}
+\contentsline {subsubsection}{\numberline {2.1.8}Documentaci\IeC {\'o} i preparaci\IeC {\'o} de la defensa}{9}
 \contentsline {subsection}{\numberline {2.2}Estimaci\IeC {\'o} del temps i seq\IeC {\@umlaut u}\IeC {\`e}ncia de tasques}{9}
 \contentsline {subsubsection}{\numberline {2.2.1}Temps estimat per tasca}{9}
 \contentsline {subsubsection}{\numberline {2.2.2}Seq\IeC {\@umlaut u}\IeC {\`e}ncia de les tasques i depend\IeC {\`e}ncies}{9}
-\contentsline {subsubsection}{\numberline {2.2.3}Diagrama de Gantt}{9}
+\contentsline {subsubsection}{\numberline {2.2.3}Diagrama de Gantt}{10}
 \contentsline {subsection}{\numberline {2.3}Possibles complicacions i alternatives}{10}
 \contentsline {subsubsection}{\numberline {2.3.1}Tardan\IeC {\c c}a en l\IeC {\textquoteright }adquisici\IeC {\'o} del router}{10}
 \contentsline {subsubsection}{\numberline {2.3.2}Dificultats en comprendre el sistema OpenWrt}{10}
 \contentsline {subsubsection}{\numberline {2.3.3}Dificultats en comprendre LISP i OOR}{10}
 \contentsline {subsubsection}{\numberline {2.3.4}Problemes amb les dues l\IeC {\'\i }nies WAN}{10}
-\contentsline {subsection}{\numberline {2.4}Finalitzaci\IeC {\'o} del projecte}{10}
+\contentsline {subsection}{\numberline {2.4}Finalitzaci\IeC {\'o} del projecte}{11}
 \contentsline {section}{\numberline {3}Gesti\IeC {\'o} econ\IeC {\`o}mica i sostenibilitat}{11}
 \contentsline {subsection}{\numberline {3.1}Identificaci\IeC {\'o} dels costos}{11}
 \contentsline {subsubsection}{\numberline {3.1.1}Pressupost}{11}
@@ -53,8 +53,8 @@
 \contentsline {subsubsection}{\numberline {3.2.4}Matriu de sostenibilitat}{14}
 \contentsline {section}{\numberline {4}Elecci\IeC {\'o} del router}{15}
 \contentsline {subsection}{\numberline {4.1}Recerca}{15}
-\contentsline {subsection}{\numberline {4.2}Candidats}{15}
-\contentsline {subsubsection}{\numberline {4.2.1}Belkin F9K1115 v2}{15}
+\contentsline {subsection}{\numberline {4.2}Candidats}{16}
+\contentsline {subsubsection}{\numberline {4.2.1}Belkin F9K1115 v2}{16}
 \contentsline {subsubsection}{\numberline {4.2.2}Netgear R6100}{16}
 \contentsline {subsubsection}{\numberline {4.2.3}Linksys WRT1200AC}{16}
 \contentsline {section}{\numberline {5}Entorn de treball i configuraci\IeC {\'o}}{17}
@@ -65,17 +65,17 @@
 \contentsline {section}{\numberline {6}Automatitzaci\IeC {\'o} del multihoming}{22}
 \contentsline {subsection}{\numberline {6.1}UCI}{22}
 \contentsline {subsection}{\numberline {6.2}Script principal}{22}
-\contentsline {subsection}{\numberline {6.3}Script d\IeC {\textquoteright }inicialitzaci\IeC {\'o}}{22}
+\contentsline {subsection}{\numberline {6.3}Script d\IeC {\textquoteright }inicialitzaci\IeC {\'o}}{23}
 \contentsline {subsection}{\numberline {6.4}Network}{23}
 \contentsline {subsection}{\numberline {6.5}OOR}{25}
 \contentsline {subsection}{\numberline {6.6}Firewall}{27}
-\contentsline {section}{\numberline {7}Creaci\IeC {\'o} de l\IeC {\textquoteright }interficie de configuraci\IeC {\'o}}{29}
+\contentsline {section}{\numberline {7}Creaci\IeC {\'o} de la interf\IeC {\'\i }cie de configuraci\IeC {\'o}}{29}
 \contentsline {subsection}{\numberline {7.1}LuCI}{29}
 \contentsline {subsubsection}{\numberline {7.1.1}Model CBI}{29}
-\contentsline {subsubsection}{\numberline {7.1.2}Controlador}{30}
-\contentsline {subsubsection}{\numberline {7.1.3}Interficie web}{30}
-\contentsline {section}{\numberline {8}Generaci\IeC {\'o} de la imatge final}{32}
-\contentsline {section}{\numberline {9}Manual d\IeC {\textquoteright }usuari}{33}
-\contentsline {section}{\numberline {10}Resultats}{33}
-\contentsline {section}{\numberline {11}Feina futura}{33}
-\contentsline {section}{\numberline {12}Conclusions}{33}
+\contentsline {subsubsection}{\numberline {7.1.2}Controlador}{31}
+\contentsline {subsubsection}{\numberline {7.1.3}Interf\IeC {\'\i }cie web}{32}
+\contentsline {section}{\numberline {8}Generaci\IeC {\'o} de la imatge final}{33}
+\contentsline {section}{\numberline {9}Manual d\IeC {\textquoteright }usuari}{35}
+\contentsline {section}{\numberline {10}Resultats}{36}
+\contentsline {section}{\numberline {11}Conclusions}{36}
+\contentsline {section}{\numberline {12}Feina futura}{36}

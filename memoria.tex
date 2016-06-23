@@ -7,6 +7,7 @@
 \usepackage{geometry}
 \usepackage{fancyhdr}
 \usepackage{pdflscape}
+\usepackage{caption}
 
 \geometry{a4paper}
 \pagestyle{fancy}
@@ -16,6 +17,10 @@
 \rhead{\footnotesize{\rightmark}}
 \cfoot{-\thepage-}
 \renewcommand{\headrulewidth}{1.5pt}
+\lstset{numbers=left, showstringspaces=false, captionpos=b}
+\renewcommand{\lstlistlistingname}{Índex de fragments de codi}
+\renewcommand{\lstlistingname}{Fragment de codi}
+
 
 \begin{document}
 
@@ -26,7 +31,7 @@
 
 \textsc{\LARGE Universitat Politècnica de Catalunya (UPC)}\\[1.5cm]
 \textsc{\Large Facultat d'Informàtica de Barcelona (FIB)}\\[0.5cm]
-\textsc{\large Grau en Enginyeria Informàtica\\Especialitat en Enginyeria de Computadors}\\[1.5cm]
+\textsc{\large Grau en Enginyeria Informàtica\\Especialitat en Tecnologies de la Informació}\\[1.5cm]
 
 \HRule \\[0.4cm]
 {\huge \bfseries Practical home multihoming with OpenWrt and Open Overlay Router}\\
@@ -41,10 +46,9 @@ Albert Cabellos Aparicio\\
 Alberto Rodríguez Natal\\
 (Departament d'Arquitectura de Computadors)}
 
-\bigskip
 \vfill
 
-\includegraphics[scale=0.5]{upc}\\[1cm]
+\includegraphics[scale=0.3]{fib-upc}\\[1cm]
 
 {\large 23 de juny de 2016}\\[3cm]
 
@@ -102,7 +106,8 @@ To do it, we will be using the \textit{LISP} network arquitecture through \texti
 \renewcommand{\thepage}{\roman{page}}
 \setcounter{page}{1}
 \tableofcontents
-
+\lstlistoflistings
+\listoffigures
 \newpage
 \renewcommand{\thepage}{\arabic{page}}
 \setcounter{page}{1}					%BE CAREFUL
@@ -111,11 +116,11 @@ To do it, we will be using the \textit{LISP} network arquitecture through \texti
 \subsubsection{Introducció}
 Aquest és un projecte de Treball de Fi de Grau (TFG) del Grau en Enginyeria Informàtica cursat a la Facultat d’Informàtica de Barcelona (FIB) de la Universitat Politècnica de Catalunya (UPC), i desenvolupat en el marc d’un projecte de col·laboració entre el Departament d’Arquitectura de Computadors (DAC) i Cisco Systems, anomenat Open Overlay Router (OOR).\\
 \\
-El projecte OOR es basa en l’arquitectura de xarxa Locator/ID Separation Protocol (LISP [1]) implementada per Cisco Systems, la qual vol solucionar el problema d’escalabilitat d’Internet causat per la creixent quantitat de dispositius que s’hi connecten i la manca d’adreces per identificar-los. Per fer-ho, LISP separa semànticament els dos tipus de dispositius que s’hi connecten: Els dispositius finals, que s’identifiquen mitjançant Endpoint Indentifiers (EIDs), i els dispositius que formen part de la capa d’enrutament, identificats per Routing Locators (RLOCs).\\
+El projecte OOR es basa en l’arquitectura de xarxa Locator/ID Separation Protocol (LISP\cite{dino13}) implementada per Cisco Systems, la qual vol solucionar el problema d’escalabilitat d’Internet causat per la creixent quantitat de dispositius que s’hi connecten i la manca d’adreces per identificar-los. Per fer-ho, LISP separa semànticament els dos tipus de dispositius que s’hi connecten: Els dispositius finals, que s’identifiquen mitjançant Endpoint Indentifiers (EIDs), i els dispositius que formen part de la capa d’enrutament, identificats per Routing Locators (RLOCs).\\
 \\
 La intenció d’OOR és oferir una implementació de codi obert de LISP compatible amb Linux, Android i OpenWrt, per tal que tothom que vulgui pugui utilitzar aquest protocol.\\
 \\
-OpenWrt, concretament, és una distribució de Linux per a dispositius incrustats (Majoritàriament routers i mòdems), que ofereix unes opcions de configuració molt més extenses i personalitzables que els firmwares preestablerts habituals [2]. Una d’aquestes opcions és, com a exemple rellevant per aquest projecte, el multihoming.\\
+OpenWrt, concretament, és una distribució de Linux per a dispositius incrustats (Majoritàriament routers i mòdems), que ofereix unes opcions de configuració molt més extenses i personalitzables que els firmwares preestablerts habituals\cite{open16}. Una d’aquestes opcions és, com a exemple rellevant per aquest projecte, el multihoming.\\
 \\
 S’anomena multihoming a la capacitat d’un dispositiu de connectar-se a més d’una xarxa de computadors d’un o varis proveïdors d’Internet (ISP), sigui per augmentar la banda ampla disponible o la fiabilitat de la xarxa. Però per a poder-ho fer, el router en qüestió necessita un mínim de dos ports de Wide Area Network (WAN), i els routers domèstics habituals només en tenen un, limitant així la utilització d’aquesta funció a una gran part del mercat. Tot i això, mitjançant una personalització intensiva de la configuració d’OpenWRT, podem convertir un dels varis ports Local Area Network (LAN) d’un dispositiu domèstic en WAN mitjançant l’ús de Xarxes Locals Virtuals (VLANs). Malgrat això, aquesta configuració requereix amplis coneixements de xarxes de computadors i aconseguir-ho no està a l’abast de tothom.\\
 \\
@@ -131,7 +136,7 @@ Quan el projecte estigui finalitzat, els dubtes i problemes derivats de la insta
 Un altre beneficiat d’aquest projecte serà Cisco Systems, ja que permetrà que més routers utilitzin LISP, incrementant així el seu mercat i la seva competitivitat davant altres protocols similars.
 \paragraph{Usuari final}
 Degut a la fàcil instal·lació i la mínima configuració dels elements necessaris per utilitzar OOR, l’usuari final que vulgui fer-ne ús només haurà de seguir un petit manual en comptes d’haver d’invertir hores en preparar-ho, així que també se’n veuran beneficiats.
-
+\newpage
 \subsection{Estat de l'art}
 \subsubsection{Multihoming}
 El multihoming, com ja s’ha explicat a l’apartat anterior, permet que un sol router pugui connectar-se a més d’una línia WAN, siguin o no del mateix proveïdor. Aquesta capacitat ens aporta certs avantatges respecte a la única connexió habitual:
@@ -140,9 +145,11 @@ El multihoming, com ja s’ha explicat a l’apartat anterior, permet que un sol
 \item Més rendiment: Depenent de la destinació, la ruta d’algun ISP pot ser més ràpida que la dels altres. D’aquesta manera manera tenim més opcions on escollir. 
 \end{itemize}
 L’esquema típic d’una estructura de xarxa usant multihoming seria la següent, on un sol dispositiu té connectivitat a més d’un ISP.
-\begin{center}
-\includegraphics{multihoming}
-\end{center}
+\begin{figure}[h]
+	\centering
+	\includegraphics{multihoming}
+	\caption{Estructura de xarxa usant multihoming}
+\end{figure}
 En vista d'aquests avantatges, cada vegada més empreses i fins i tot usuaris domèstics consideren l'ús del multihoming com una opció factible, i cada cop trobem més demanda d'aquest servei.
 
 \subsubsection{LISP i OOR}
@@ -152,17 +159,19 @@ LISP és un model de xarxa impulsat per l’IETF (Internet Engineering Task Forc
 Les xarxes de computadors actuals utilitzen l’adreça IP per indicar la identitat del dispositiu així com també la manera com està connectat a la xarxa. Això causa que el nombre d’adreces IP disponibles sigui molt baix, degut al creixement dels dispositius que utilitzen Internet (En part causat pel multihoming i l’èxit de l’Internet de les Coses (IoT), i LISP pretén solucionar el problema separant en dos espais de noms el “qui” i el “com” d’aquestes adreces IP, utilitzant un sistema de “mapping” per  relacionar les dues parts.\\
 \\
 L’estructura habitual d’un entorn de xarxa LISP és el mostrat a continuació:
-\begin{center}
-\includegraphics[width=14cm]{lisp}
-\end{center}
-La xarxa on es troben els endhosts s’anomena EID Space, està vinculada a un xTR (Un router compatible amb LISP), i aquests només es poden comunicar amb altres endhosts. Si formen part de diferents EID Spaces l'xTR haurà d'atravessar la xarxa interna de LISP, consultant al Mapping System l'ubicació d'aquest EID Space (Anomenada RLOC).
-LISP es troba en un desenvolupament continu, optimitzant diferents paràmetres de l’arquitectura per a ser aplicats a resoldre varis problemes actuals [3], [4].\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=14cm]{lisp}
+	\caption{Entorn de xarxa LISP}
+\end{figure}
+La xarxa on es troben els endhosts s’anomena EID Space, està vinculada a un xTR (Un router compatible amb LISP), i aquests només es poden comunicar amb altres endhosts. Si formen part de diferents EID Spaces l'xTR haurà d'atravessar la xarxa interna de LISP, consultant al Mapping System l'ubicació d'aquest EID Space (Anomenada RLOC)\cite{alberto15}.
+LISP es troba en un desenvolupament continu, optimitzant diferents paràmetres de l’arquitectura per a ser aplicats a resoldre varis problemes actuals\cite{freitas15},\cite{cisco15}.\\
 \\
 El seu objectiu és millorar tota l’estructura interna d’Internet, i per tant és una arquitectura molt ambiciosa i es troba molt avançada tecnològicament respecte a l’arquitectura que hi ha implementada actualment. \\
 \\
 Cisco Systems és un dels grans impulsadors d’aquesta arquitectura, i l’ha implementat per a ser utilitzada en el sistema operatiu dels seus routers (IOS).\\
 \\
-OOR és l’opció de software lliure que treballa per oferir LISP a dispositius que utilitzin altres sistemes operatius, com ara Linux, Androiid i OpenWrt. El projecte va ser anunciat al 2011 per Cisco Systems, i tot i que va començar sent una implementació de mobilitat per LISP [5], la seva aportació ha augmentat dràsticament; ha passat a implementar tots els elements que formen l’arquitectura i hi està integrant tecnologies actuals com ara Open DayLight (ODL) [5], oferint funcionalitat completa a totes les plataformes mencionades.
+OOR és l’opció de software lliure que treballa per oferir LISP a dispositius que utilitzin altres sistemes operatius, com ara Linux, Androiid i OpenWrt. El projecte va ser anunciat al 2011 per Cisco Systems, i tot i que va començar sent una implementació de mobilitat per LISP\cite{albert09}, la seva aportació ha augmentat dràsticament; ha passat a implementar tots els elements que formen l’arquitectura i hi està integrant tecnologies actuals com ara Open DayLight (ODL)\cite{alberts15}, oferint funcionalitat completa a totes les plataformes mencionades.
 
 \subsubsection{OpenWrt}
 Actualment, l’opció de software lliure més utilitzada, més extesa i amb la comunitat més activa en quant a sistemes operatius per a routers és OpenWrt. \\
@@ -220,16 +229,16 @@ El model escollit ha d’estar a la venta actual i internacionalment, ja que tot
 El projecte necessita que el hardware amb el que es treballarà pugui crear i gestionar xarxes virtuals, i així poder configurar el multihoming definit al document anterior.
 \paragraph{Especificacions adequades}
 Si el router és dels últims del mercat i les seves característiques a nivell de hardware són prou altes, no caldrà renovar-lo a curt ni mig plaç, ja que el que ofereixin els nous models estaran igualats als seus.
-\subsubsection{Familiarització amb el sistema OpenWrt}
-Al ser una distribució que no s’utilitza durant la carrera, s’hauran de dedicar vàries hores a familiaritzar-se amb el sistema i els seus dos mètodes d’interacció: UCI i LUCI. S’hi dedicaran aproximadament 60 hores en total, i serà necessari l’ordinador del DAC mencionat anteriorment, un mínim de tres targes de xarxa connectades a ell, un mínim de tres cables de xarxa d’un metre, el model de router escollit i accés a Internet.
+\subsubsection{Familiarització amb OpenWrt}
+Al ser una distribució que no s’utilitza durant la carrera, s’hauran de dedicar vàries hores a familiaritzar-se amb el sistema i els seus dos mètodes d’interacció: UCI i LuCI. S’hi dedicaran aproximadament 60 hores en total, i serà necessari l’ordinador del DAC mencionat anteriorment, un mínim de tres targes de xarxa connectades a ell, un mínim de tres cables de xarxa d’un metre, el model de router escollit i accés a Internet.
 \subsubsection{Familiarització amb LISP i OOR}
 L’arquitectura LISP i el projecte OOR que l’utilitza són nous i tampoc es veuen a cap assignatura del grau, per tant caldrà també una familiarització amb ells i amb els seus fitxers de configuració (Tant a Linux com a OpenWrt). Es pereveu dedicar-hi unes 60 hores. Per a fer-ho, caldrà l’ordinador del DAC amb les targes de xarxa anteriors, cables de xarxa, el router escollit, vàries màquines virtuals i accés a Internet
 \subsubsection{Configuració del multihoming}
 El següent pas serà configurar un dels ports LAN del router, aïllat de la resta per una VLAN, com a port WAN. Això requerirà una estructura de xarxa OOR funcionant (Amb vàries màquines virtuals implicades i ben configurades) i una configuració del router OpenWrt  correcta, així que necessitarà que totes les tasques anteriors hagin acabat. S’hi dedicaran 70 hores. En quant a requeriments físics, caldrà l’ordinador del DAC amb les seves targes, cables de xarxa, dues línies WAN amb una adreça pública pròpia (S’usaran IPs de la UPC), el router i màquines virtuals.
 \subsubsection{Automatització del multihoming}
 La base del projecte és facilitar al màxim la configuració d’OOR i el multihoming a l’usuari final, per tant que aquest s’hagi de limitar a seguir el mínim de passos possible quan compri el router indicat. Per tant es buscarà la manera d’automatitzar tot el procés realitzat anteriorment, mitjançant scripts o amb la configuració prèvia d’arxius de OpenWrt OOR, i empaquetar-ho tot en una distribució independent. El temps estimat per a aquesta recerca i implementació serà de 70 hores, i es necessitarà també l’ordinador del DAC amb les seves targes de xarxa, els cables de xarxa, les dues línies WAN amb adreça pública pròpia, el router i màquines virtuals.
-\subsubsection{Adaptació de la interficie d’OpenWrt}
-Al haver afegit multihoming i OOR integrats directament al sistema, s’haurà de modificar la interficie de configuració que usarà l’usuari final. Aquesta haurà de comptar amb paràmetres per configurar els detalls mencionats anteriorment i facilitar la seva modificació. S’hi dedicaran 60 hores i es requerirà l’ordinador del DAC amb les seves targes de xarxa, cables de xarxa, dues línies WAN amb adreça pública pròpia, el router i màquines virtuals.
+\subsubsection{Adaptació de la interfície}
+Al haver afegit multihoming i OOR integrats directament al sistema, s’haurà de modificar la interfície de configuració que usarà l’usuari final. Aquesta haurà de comptar amb paràmetres per configurar els detalls mencionats anteriorment i facilitar la seva modificació. S’hi dedicaran 60 hores i es requerirà l’ordinador del DAC amb les seves targes de xarxa, cables de xarxa, dues línies WAN amb adreça pública pròpia, el router i màquines virtuals.
 \subsubsection{Documentació i preparació de la defensa}
 Finalment el projecte s’ha de documentar i defensar davant d’un tribunal de professors i doctors de la facultat. La redacció del document i la preparació de la defensa durarà unes 50 hores, i s’utilitzarà un ordinador portàtil o el proporcionat pel DAC, un editor de text compatible amb el llenguatge LaTeX, i un conversor de documents a PDF.
 
@@ -245,7 +254,7 @@ Finalment el projecte s’ha de documentar i defensar davant d’un tribunal de 
 		Familiarització amb LISP i OOR & 60 \\ \hline
 		Configuració del multihoming & 70 \\ \hline
 		Automatització del multihoming & 70 \\ \hline
-		Adaptació de la interficie d'OpenWrt & 60 \\ \hline
+		Adaptació de la interfície & 60 \\ \hline
 		Documentació i preparació de la defensa & 60 \\ \hline
 		Total & 515 \\ \hline
 		\hline
@@ -263,18 +272,19 @@ Finalment el projecte s’ha de documentar i defensar davant d’un tribunal de 
 		Familiarització amb LISP i OOR & Familiarització amb OpenWrt \\ \hline
 		Configuració del multihoming & Familiarització amb LISP i OOR \\ \hline
 		Automatització del multihoming & Configuració del multihoming \\ \hline
-		Adaptació de la interficie d'OpenWrt & Automatització del multihoming \\ \hline
-		Documentació i preparació de la defensa & Adaptació de la interficie d'OpenWrt \\ \hline
+		Adaptació de la interfície & Automatització del multihoming \\ \hline
+		Documentació i preparació de la defensa & Adaptació de la interfície \\ \hline
 		\hline
 	\end{tabular}
 \end{center}
-
+\newpage
 	\subsubsection{Diagrama de Gantt}
-	La planificació temporal ha estat la següent:
-	\begin{flushleft}
-	\includegraphics[width=14cm]{gantt1}
-	\end{flushleft}
-
+	La planificació temporal ha estat la següent:\\
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=14cm]{gantt1}
+		\caption{Entorn de xarxa LISP}
+	\end{figure}	
 
 \subsection{Possibles complicacions i alternatives}
 \subsubsection{Tardança en l’adquisició del router}
@@ -292,7 +302,7 @@ Donat el diagrama de Gantt anterior, i comptant que la presentació final del pr
 \section{Gestió econòmica i sostenibilitat}
 \subsection{Identificació dels costos}
 \subsubsection{Pressupost}
-Aquí es detalla el cost de cada element necessari per a dur a terme cada tasca, tal i com s’indicaven en l’anterior document, indicant per a cada element el seu cost directe, indirecte, amortització, contingències i imprevistos. L’odinador de sobretaula és cedit pel repartament, de manera que el seu cost s’ha calculat segons preu de mercat seguint les seves característiques hardware, així com també el preu de les interficies de xarxa i els cables corresponents.
+Aquí es detalla el cost de cada element necessari per a dur a terme cada tasca, tal i com s’indicaven en l’anterior document, indicant per a cada element el seu cost directe, indirecte, amortització, contingències i imprevistos. L’odinador de sobretaula és cedit pel repartament, de manera que el seu cost s’ha calculat segons preu de mercat seguint les seves característiques hardware, així com també el preu de les interfícies de xarxa i els cables corresponents.
 \begin{center}
 	\begin{tabular}{| l | l | l | l | l | l |}
 		\hline
@@ -310,7 +320,7 @@ Aquí es detalla el cost de cada element necessari per a dur a terme cada tasca,
 		Ordinador de sobretaula & 1 & 500 & 4 & (500/7936) * 60h = 3.78 & 3.78 \\ \hline
 		Google Chrome & 1 & - & - & 0 & 0 \\ \hline
 		Google Drive & 1 & - & - & 0 & 0 \\ \hline
-		Familiarització amb el sistema OpenWrt & & & & & \\ \hline
+		Familiarització amb OpenWrt & & & & & \\ \hline
 		Ordinador de sobretaula & 1 & 500 & 4 & (500/7936) * 60h = 3.78 & 3.78 \\ \hline
 		Targeta de xarxa & 3 & 15 & 4 & (15/7936) * 60h = 0.113 & 0.113 \\ \hline
 		Cable de xarxa & 3 & 2 & 4 & (2/7936) * 60h = 0.015 & 0.015 \\ \hline
@@ -332,7 +342,7 @@ Aquí es detalla el cost de cada element necessari per a dur a terme cada tasca,
 		Cable de xarxa & 3 & 2 & 4 & (2/7936) * 60h = 0.015 & 0.015 \\ \hline
 		Router & 1 & 150 & 4 & (150/7936) * 60h = 1.13 & 1.13 \\ \hline
 		Línies WAN & 2 & - & - & 0 & 0 \\ \hline
-		Adaptació de la interfície d'OpenWrt & & & & & \\ \hline
+		Adaptació de la interfície & & & & & \\ \hline
 		Ordinador de sobretaula & 1 & 500 & 4 & (500/7936) * 60h = 3.78 & 3.78 \\ \hline
 		Targeta de xarxa & 3 & 15 & 4 & (15/7936) * 60h = 0.113 & 0.113 \\ \hline
 		Cable de xarxa & 3 & 2 & 4 & (2/7936) * 60h = 0.015 & 0.015 \\ \hline
@@ -343,7 +353,7 @@ Aquí es detalla el cost de cada element necessari per a dur a terme cada tasca,
 	\begin{tabular}{| l | l | l | l | l | l |}
 		\hline
 		Tasca & U. & Preu/u. & Vida útil & Amortització & Preu \\ \hline
-		Documentació i preparació de la defensa & & & & & \\ \hline
+		Documentació i defensa & & & & & \\ \hline
 		Ordinador de sobretaula & 1 & 500 & 4 & (500/7936) * 60h = 3.78 & 3.78 \\ \hline
 		Editor Vim & 1 & - & - & 0 & 0 \\ \hline
 		PDFLaTeX & 1 & - & - & 0 & 0 \\ \hline
@@ -370,6 +380,7 @@ També s’ha calculat el cost dels recursos humans implicats en el projecte, ca
 		Director del projecte & 280 & 20 & 5.600 \\ \hline
 		Codirector del projecte & 280 & 20 & 5.600 \\ \hline
 		Cost total & & & 15.320 \\ \hline
+		\hline
 	\end{tabular}
 \end{center}
 
@@ -404,13 +415,14 @@ A partir dels resultats anteriors, la matriu de sostenibilitat generada és la s
 		\hline
 		Econòmica & Social & Ambiental \\ \hline
 		8/10 & 8/10 & 8/10\\ \hline
+		\hline
 	\end{tabular}
 \end{center}
 
 \section{Elecció del router}
 
 \subsection{Recerca}
-A l’hora d’escollir el router descrit anteriorment, s’ha consultat la pàgina de dispositius compatibles de la pàgina oficial d’OpenWrt[ref]. Es necessitava un router que funcionés amb l’última versió de al distribució, que acceptés la creació de xarxes virtuals i que encara es pogués trobar al mercat. Com la llista permet filtrar el resultats segons diferents característiques o funcionalitats dels dispositius, s’hi han aplicat els següents paràmetres:
+A l’hora d’escollir el router descrit anteriorment, s’ha consultat la pàgina de dispositius compatibles de la pàgina oficial d’OpenWrt\cite{opens16}. Es necessitava un router que funcionés amb l’última versió de al distribució, que acceptés la creació de xarxes virtuals i que encara es pogués trobar al mercat. Com la llista permet filtrar el resultats segons diferents característiques o funcionalitats dels dispositius, s’hi han aplicat els següents paràmetres:
 \begin{itemize}
 \item Device Type: Router
 \item Availability: Available
@@ -427,7 +439,7 @@ Un cop filtrats, també s’han tingut en compte diversos factors que no podien 
 \item Que estigués a la venda internacionalment i disponible a les botigues online més importants (Com Amazon).
 \end{itemize}
 Amb aquest últim filtre manual es van seleccionar alguns models i es van plantejar com a candidats vàlids a la reunió setmanal, juntament amb les seves característiques més destacables.
-
+\newpage
 \subsection{Candidats}
 \subsubsection{Belkin F9K1115 v2}
 \begin{itemize}
@@ -479,7 +491,7 @@ Per tal de crear l’automatització de les configuracions, s’ha simulat una a
 Aquesta ha estat la fase més costosa del projecte, degut en part al desconeixement de l’arquitectura de xarxa LISP i dels fitxers d’OOR, i també als errors trobats a l’hora de fer la configuració. Els errors s’han trobat tant a la configuració de les màquines virtuals com a la configuració del router, i també a la configuració de xarxa de la màquina física, on el gestor de xarxa per defecte d’Ubuntu (NetworkManager) no guardava els canvis realitzats a les interfícies i no havia definit les rutes per defecte necessàries.
 
 \subsection{Màquina física}
-Actua com a equip principal del projecte, on s’hi ha cercat el model de router, creat i gestionat les màquines virtuals, configurat el router, creat els scripts d’automatització del sistema, creat la interficie de configuració, i escrit part de la memòria del projecte.\\
+Actua com a equip principal del projecte, on s’hi ha cercat el model de router, creat i gestionat les màquines virtuals, configurat el router, creat els scripts d’automatització del sistema, creat la interfície de configuració, i escrit part de la memòria del projecte.\\
 \\
 De cara a l’escenari OOR ha actuat com a endhost, amb adreça 192.168.1.128. La seva configuració de xarxa ha estat l’habitual, ja que els endhosts són independents de l’ús d’OOR.
 També ha fet de pont de connexió entre les màquines virtuals. S’han connectat 4 cables de xarxa entre aquesta màquina i el router, que han servit pels següents propòsits:
@@ -491,11 +503,12 @@ També ha fet de pont de connexió entre les màquines virtuals. S’han connect
 \end{itemize}
 
 \subsection{Màquina virtual: Map Server/Map Resolver}
-S’hi ha fet una instal·lació minimalista de la versió 14.04 d’Ubuntu Server, ja que no es necessitava interfície gràfica, i s’ha fet un pont virtual a una de les interficies de xarxa de la màquina física, com ja s’ha explicat anteriorment.\\
+S’hi ha fet una instal·lació minimalista de la versió 14.04 d’Ubuntu Server, ja que no es necessitava interfície gràfica, i s’ha fet un pont virtual a una de les interfícies de xarxa de la màquina física, com ja s’ha explicat anteriorment.\\
 \\
 En aquesta màquina s’hi han unit dos dels elements que formen part de l’entorn de xarxa LISP, ja que és un cas usual i a més facilitava el desplegament virtual d’aquesta. Així doncs, la seva funció és la de gestionar la base de dades que relaciona RLOCs amb EIDs, i acceptar i respondre sol·licituds que facin referència a aquesta.\\
 \\
 La configuració d’OOR que s’ha emprat és la descrita a continuació:\\
+\lstset{caption=Configuració d'OOR del Map Server/Map Resolver}
 \begin{lstlisting}[frame=single]
 ################################################
 #
@@ -536,7 +549,7 @@ lisp-site {
 S’hi ha fet una instal·lació i configuració idèntica a l’anterior. La primera intenció amb aquesta màquina era utilitzar-la com a segon xTR que anunciés un altre EID, i connectar-hi virtualment una tercera màquina virtual que actués com a endhost dins d’aquest. Finalment, però, es va decidir que actués com a Mobile Node (MN), que ens permet utilitzar-lo tant com a RLOC com a endhost dins del seu propi EID, estalviant així la creació i gestió d’una tercera màquina virtual.\\
 \\
 La configuració d’OOR que s’ha emprat és la descrita a continuació:\\
-\lstset{language=C}
+\lstset{caption=Configuració d'OOR del Mobile Node}
 \begin{lstlisting}[frame=single]
 
 ################################################
@@ -600,7 +613,7 @@ Actua com a enrutador de tot el trànsit de l’escenari, i com a xTR dins de l�
 \item LAN: Reuneix la resta de ports del router, i són interfícies destinades a endhosts de la xarxa. Actualment un dels ports destinats a aquesta VLAN és utilitzat per gestionar-lo via SSH, i l’altre com a enllaç amb l’endhost.
 \end{itemize}
 La seva configuració d’OOR és la següent. La sintaxi és diferent als fitxers mostrats anteriorment ja que OpenWrt utilitza un llenguatge d’scripting concret, UCI, que s’explica més endavant.\\
-\lstset{language=sh}
+\lstset{language=sh, caption=Configuració d'OOR de l'xTR}
 \begin{lstlisting}[frame=single]
 config daemon
     option debug '2'
@@ -648,10 +661,10 @@ config rloc-address
 \section{Automatització del multihoming}
 Per tal de complir amb l’objectiu del projecte, s’ha cercat la manera òptima d’automatitzar la configuració dels fitxers de xarxa, OOR i firewall, de tal manera que l’interacció de l’usuari sigui mínima. Per a fer-ho, s’ha creat un script per a cada fitxer a modificar, i finalment un que els agrupa i executa linealment. 
 \subsection{UCI}
-Els scripts s’han creat utilitzat la UCI command line, el llenguatge d’scripting dedicat d’OpenWrt, que ens permet llegir i modificar la configuració del sistema sense utilitzar parsing. Aquest es basa en l’anomenada Unified Configuration Interface (UCI), que pretén centralitzar tota la configuració d’OpenWrt en un conjunt de fitxers que s’ubiquen al mateix arbre de directoris i que segueixen la mateixa sintaxi. És un llenguatge poc flexible, ja que es tracta de l’edició de fitxers amb una estructura molt concreta i amb unes opcions limitades, però és també una manera molt còmode de canviart configuracions.
+Els scripts s’han creat utilitzat la UCI command line, el llenguatge d’scripting dedicat d’OpenWrt, que ens permet llegir i modificar la configuració del sistema sense utilitzar parsing\cite{uci16}. Aquest es basa en l’anomenada Unified Configuration Interface (UCI), que pretén centralitzar tota la configuració d’OpenWrt en un conjunt de fitxers que s’ubiquen al mateix arbre de directoris i que segueixen la mateixa sintaxi. És un llenguatge poc flexible, ja que es tracta de l’edició de fitxers amb una estructura molt concreta i amb unes opcions limitades, però és també una manera molt còmode de canviart configuracions.
 \subsection{Script principal}
 Es limita a executar tot el conjunt d’scripts de configuració la primera vegada que OpenWrt s’executa al dispositiu. El seu contingut és el següent:\\
-\lstset{language=sh}
+\lstset{language=sh, caption=Script principal d'automatització}
 \begin{lstlisting}[frame=single]
 
 # This file executes the configuration scripts to create a
@@ -673,7 +686,7 @@ sh ./firewall.sh
 S’ha d’assegurar que l’script anterior s’executi a l’inciar el sistema, però que només ho faci el primer cop. Per fer-ho, s’ha generat un script ubicat al directori /etc/init.d per tal que s’executi a l’inici, i s’ha usat un fitxer buit per comprovar si aquest ja s’havia executat anteriorment: Si el fitxer “firstboot.log” es troba al directori /scripts/ del sistema, significa que no és el primer cop que el sistema arrenca i per tant no cal generar la configuració. En el cas contrari, s’executaria l’automatització i es crearia el fitxer citat anteriorment.\\
 \\
 Aquest és el codi de l’script:\\
-\lstset{language=sh}
+\lstset{language=sh, caption=Script per executar l'automatització només una vegada}
 \begin{lstlisting}[frame=single]
 #!/bin/sh
 #sh /scripts/config.sh
@@ -690,6 +703,7 @@ Edita el fitxer de configuració de la xarxa, ubicat a /etc/config/network. Crea
 La configuració ha variat entre els dos models de router, tant per temes d'adreçament com per diferències entre el funcionament del switch dels dos dispositius.\\
 \\
 El seu contingut és el següent:\\
+\lstset{caption=Script de configuració de la xarxa: WNDR3800}
 \begin{lstlisting}[frame=single]
 
 # This script edits the default network configuration from 
@@ -733,6 +747,7 @@ uci commit network
 /etc/init.d/network reload
 \end{lstlisting}
 
+\lstset{caption=Script de configuració de la xarxa: WRT1200AC}
 \begin{lstlisting}[frame=single]
 # This script edits the default network configuration from 
 # OpenWrt and enables the use of multihoming in the device.
@@ -782,11 +797,12 @@ uci commit network
 \end{lstlisting}
 
 \subsection{OOR}
-Edita el fitxer de configuracó d’OOR, ubicat a /etc/config/oor. Assigna al router la funció d’xTR, assigna les dues interficies que s’anunciaran com a RLOC, i guarda i recarrega la configuració per tal que els canvis s’apliquin.\\
+Edita el fitxer de configuracó d’OOR, ubicat a /etc/config/oor. Assigna al router la funció d’xTR, assigna les dues interfícies que s’anunciaran com a RLOC, i guarda i recarrega la configuració per tal que els canvis s’apliquin.\\
 \\
-També varia segons el model de router, ja que els noms de les interficies utilitzades no són compartits.\\
+També varia segons el model de router, ja que els noms de les interfícies utilitzades no són compartits.\\
 \\
 El seu contingut és el següent:\\
+\lstset{caption=Script de configuració d'OOR: WNDR3800}
 \begin{lstlisting}[frame=single]
 
 # This script edits the default configuration file for OOOR
@@ -824,7 +840,8 @@ uci commit oor
 
 /etc/init.d/oor reload
 \end{lstlisting}
-
+\newpage
+\lstset{caption=Script de configuració d'OOR: WRT1200AC}
 \begin{lstlisting}[frame=single]
 
 # This script edits the default configuration file for OOOR
@@ -865,11 +882,12 @@ uci commit oor
 
 
 \subsection{Firewall}
-Edita el fitxer de configuració del firewall, ubicat a /etc/config/firewall. Permet el forwarding entre les diferents interficies (Tants els RLOCs com l’EID) i també permet el tràfic entrant i sortint dels ports 4341 i 4342, necessaris pel funcionament d’OOR.\\
+Edita el fitxer de configuració del firewall, ubicat a /etc/config/firewall. Permet el forwarding entre les diferents interfícies (Tants els RLOCs com l’EID) i també permet el tràfic entrant i sortint dels ports 4341 i 4342, necessaris pel funcionament d’OOR.\\
 \\
 En aquest cas, la configuració necessaria per amdós routers és la mateixa, de manera que només s'adjunta un dels codis.\\
 \\
 El seu contingut és el següent:\\
+\lstset{caption=Script de configuració del firewall}
 \begin{lstlisting}[frame=single]
 # This script configures the firewall of OpenWrt to enable
 # the use of OOR. We must allow traffic in ports 4341 
@@ -929,62 +947,107 @@ uci commit firewall
 /etc/init.d/firewall restart
 \end{lstlisting}
 
-\section{Creació de l’interficie de configuració}
+\section{Creació de la interfície de configuració}
 Encara que s’hagi automatitzat la configuració bàsica, l’usuari haurà de configurar manualment certs paràmetres d’OOR. Per tal que no hagi de lidiar amb scripts executats per linia de comandes ni editar fitxers manualment, s’ha utilitzat l’eina de configuració web oficial d’OpenWrt, LuCI.
 \subsection{LuCI}
-LuCI va sorgir degut a la falta d’una interficie de configuració simple, senzilla i fàcil d’ampliar per a dispositius incrustats. Utilitza el llenguatge de programació Lua i separa l’interficie en diferents parts lògiques, com ara vistes i controladors, per tal de fer-la el més modular i pràctica possible.
+LuCI va sorgir degut a la falta d’una interfície de configuració simple, senzilla i fàcil d’ampliar per a dispositius incrustats. Utilitza el llenguatge de programació Lua i separa la interfície en diferents parts lògiques, com ara vistes i controladors, per tal de fer-la el més modular i pràctica possible.
 A continuació es detallen els fitxers necessaris que s’han creat per implementar aquest mòdul.
 \subsubsection{Model CBI}
 Per a crear la vista del mòdul s’ha utilitzat el model CBI que proporciona LuCI, el qual crea una vista estil formulari amb els camps estipulats i directament modifica el fitxer corresponent amb les dades introduïdes per l’usuari, sense necessitat de crear una vista apart.\\
 \\
 Aquest és el codi que s'ha generat:\\
+\lstset{caption=Model CBI de la interfície LuCI}
 \begin{lstlisting}[frame=single]
+m = Map("oor", "OOR Configuration")
 
-m = Map("oor", "OOR Configuration") -- We want to edit the uci config file /etc/config/lispd
-
-s = m:section(TypedSection, "map-resolver", translate("Map Resolver"))
+s = m:section(TypedSection, "map-resolver",
+		translate("Map Resolver"))
 s.addremove = false
 s.anonymous = true
-   s:option(Value, "address", "Address", "Encapsulated Map-Requests are sent to this map resolver (IPv4 or IPv6 or FQDN name)")
+s:option(Value, "address", "Address",
+		"Encapsulated Map-Requests are sent to " ..
+		"this map resolver (IPv4 or IPv6 or " ..
+		"FQDN name)")
 
 s = m:section(TypedSection, "map-server", "Map Server")
-   s.addremove = false
-   s.anonymous = true
-   s:option(Value, "address", "Address", "Register to this map server (IPv4 or IPv6 or FQDN name)")
-   s:option(Value, "key", "Key","Password to authenticate with the map-server")
+s.addremove = false
+s.anonymous = true
+s:option(Value, "address", "Address", "Register to this map" ..
+		"server(IPv4 or IPv6 or FQDN name)")
+s:option(Value, "key", "Key","Password to authenticate" ..
+		"with the map-server")
 
-s = m:section(TypedSection, "database-mapping", "Database Mapping")
-   s.addremove = false
-   s.anonymous = true
-   s:option(Value, "eid_prefix", "EID prefix", "IPv4 or IPv6 network address of the OpenWrt LISP node / prefix length : x.x.x.x/x | y:y:y:y::y/y")
-   s:option(Value, "priority_v4", "IPv4 Priority","Priority of IPv4 locator of the interface for this EID. Locators with lower values are more preferable. A value of -1  means that IPv4 address of that interface is not used [0-255]")
-   s:option(Value, "weight_v4", "IPv4 Weight", "Weight of IPv4 locator of the interface for this EID. When priorities are the same for multiple RLOCs, the Weight indicates how to balance unicast traffic between them [0-255]")
-   s:option(Value, "priority_v6", "IPv6 Priority","Priority of IPv6 locator of the interface for this EID. Locators with lower values are more preferable. A value of -1  means that IPv6 address of that interface is not used [0-255]")
-   s:option(Value, "weight_v6", "IPv6 Weight","Weight of IPv6 locator of the interface for this EID. When priorities are the same for multiple RLOCs, the Weight indicates how to balance unicast traffic between them [0-255]")
+s = m:section(TypedSection, "database-mapping",
+		"Database Mapping")
+s.addremove = false
+s.anonymous = true
+s:option(Value, "eid_prefix", "EID prefix", 
+		"IPv4 or IPv6 network address of the OpenWrt" ..
+		"LISP node / prefix length: x.x.x.x/x | " ..
+		" y:y:y:y::y/y")
+s:option(Value, "priority_v4",
+		"IPv4 Priority","Priority of IPv4 locator " ..
+		of	the interface for this EID. " ..
+		"Locators with lower values are more " ..
+		preferable. "A value of -1  means " ..
+		"that IPv4 addres of that interface " ..
+		"is not used [0-255]")
+s:option(Value, "weight_v4", 
+		"IPv4 Weight", "Weight of IPv4 " ..
+		"locator of the	interface for this " ..
+		"EID. When priorities are the same " ..
+		"for multiple RLOCs, the Weight " ..
+		"indicates how to balance unicast " ..
+		"traffic between them [0-255]")
+s:option(Value, "priority_v6",
+		"IPv6 Priority","Priority of IPv6 " ..
+		"locator of the interface for this EID." ..
+		"Locators with lower values " ..
+		"are more preferable. A value of " ..
+		"-1  means that IPv6 address of " ..
+		"that interface is not used [0-255]")
+s:option(Value, "weight_v6", 
+		"IPv6 Weight","Weight of IPv6 " ..
+		"locator of the interface for this  EID." ..
+		"When priorities are the same for " ..
+		"multiple RLOCs, the Weight indicates " ..
+		"how to balance unicast traffic between " ..
+		"them [0-255]")
 
 return m -- Returns the map
 \end{lstlisting}
 
 \subsubsection{Controlador}
 És qui s’encarrega d’indicar on es troba el model, dir de quin tipus és, i definir on i com apareix dins el menú principal de LuCI. El codi és el següent:\\
+\lstset{caption=Controlador de la interfície LuCI}
 \begin{lstlisting}[frame=single]
 module("luci.controller.oor.oor", package.seeall)
 
 function index()
-    entry({"admin", "network", "interfaces"}, cbi("oor/oor"), "OOR Configuration", 30).dependent=false
+    entry({"admin", "network", "interfaces"}, cbi("oor/oor"),
+	"OOR Configuration", 30).dependent=false
 end
 \end{lstlisting}
+\newpage
+\subsubsection{Interfície web}
+El resultat d’aquests fitxers és el mostrat a continuació. \\
+\\
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.75]{luci1}
+		\caption{Menú principal de LuCI, secció Network}
+	\end{figure}	
+	
+Accedint al menú principal de LuCI, a la pestanya de Network, apareix l’opcí de configurar OOR. Això ens porta al model CBI descrit anteriorment, on ens deixa modificar les opcions necessaries per a que OOR es pugui posar en marxa.\\
 
-\subsubsection{Interficie web}
-El resultat d’aquests fitxers és el mostrat a continuació. Accedint al menú principal de LuCI, a la pestanya de Network, apareix l’opcí de configurar OOR. Això ens porta al model CBI descrit anteriorment, on ens deixa modificar les opcions necessaries per a que OOR es pugui posar en marxa.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=15cm]{luci2}
+		\caption{Pàgina de configuració d'OOR a LuCI}
+	\end{figure}	
 
-\begin{center}
-	\includegraphics{luci1}
-	\\
-	\includegraphics[width=15cm]{luci2}
-\end{center}
-Com es pot observar, el mòdul ens demana les dades en un formulari, que a continuació modificarà automàticament el fitxer de configuració d’OOR.
-
+Com es pot observar, el mòdul ens demana les dades en un formulari, que a continuació modificarà automàticament el fitxer de configuració d’OOR. Es demanen només els paràmetres estrictament necessaris per tal que OOR pugui executar-se correctament, i s'han exclòs les opcions més avançades per mantenir la facilitat d'ús de la interfície.
+\newpage
 \section{Generació de la imatge final}
 Un cop preparada tota l’automatització del sistema, s’ha creat un fitxer binari d’instal·lació amb tota aquesta configuració inclosa. S’ha fet utilitzant l’OpenWrt Build System amb els següents paràmetres, apart dels activats per defecte:
 \begin{itemize}
@@ -1013,25 +1076,106 @@ A continuació s’ha seguit la següent cadena de comandes dins una terminal: p
 \item make V=s
 \end{itemize}
 El resultat és una imatge de sistema compilada i llesta per ser carregada des del firmware oficial del router.
-
+\newpage
 \section{Manual d’usuari}
-Finalment, es presenta una guia dels passos a seguir per configurar el sistema, en forma de petit manual i amb ajuda de captures de pantalla per tal que qualsevol usuari pugui seguir-lo fàcilment.\\
+Finalment, es presenta una guia dels passos a seguir per configurar el sistema, en forma de petit manual i amb ajuda de captures de pantalla per tal que qualsevol usuari pugui seguir-lo fàcilment. En aquesta memòria es presenta una versió simplificada del manual.\\
 \\
-Aquest manual inclou tot el procés de configuració, des d’enllaçar a l’usuari a la pàgina on descarregar la imatge generada anteriorment fins l’accés a l’interficie LuCI per introduïr les dades d’OOR.
+Primer s'accedeix a la direcció per defecte del router, 192.168.1.1, a través del navegador, on veurem la interfície web del firmware per defecte, amb aquest menú mostrat a l'esquerra.
 
+\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.4]{man1}
+		\caption{Manual de configuració: Connectivitat}
+	\end{figure}
+	
+Des d'aquí clicarem l'opció Connectivity que ens mostrarà, entre d'altres, l'opció de carregar nosaltres mateixos una actualització del firmware. Ho utilitzarem doncs per instal·lar la nostra imatge d'OpenWrt.
+\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5]{man2}
+		\caption{Manual de configuració: Càrrega}
+	\end{figure}
+\\
+\\
+	A continuació el dispositiu es reiniciarà i la pàgina es tornarà a carregar automàticament, aquest cop mostrant la pàgina principal de LuCI. Ens demanarà que introduïm una contrasenya per accedir de manera segura al router, i l'introduïrem.
+\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5]{man3}
+		\caption{Manual de configuració: Contrasenya}
+	\end{figure}
+
+Un cop acabat aquest pas, només quedarà configurar OOR utilitzant la interfície mostrada anteriorment.	
+	
 \section{Resultats}
-A la data d’entrega de la memòria s’ha pogut configurar, automatitzar i executar correctament la funcionalitat de multihoming utilitzant OOR amb el model Netgear WNDR3800. S’ha capturat tràfic de xarxa sortint del router balançejat entre les dues interficies WAN dirigit al Mobile Node, fet que verifica l’efectivitat de la configuració.\\
+A la data d’entrega de la memòria s’ha pogut configurar, automatitzar i executar correctament la funcionalitat de multihoming utilitzant OOR amb el model Netgear WNDR3800. S’ha capturat tràfic de xarxa sortint del router balançejat entre les dues interfícies WAN dirigit al Mobile Node, fet que verifica l’efectivitat de la configuració.\\
 \\
 Pel que fa al model Linksys WRT1200AC també s’hi ha configurat i automatitzat el multihoming, però encara s’hi estan analitzant detalls concrets del router que, al moment d’entrega d’aquesta memòria, no permeten l’execució totalment satisfactòria de la funcionalitat de multihoming en aquest dispositiu.
+
+\section{Conclusions}
+OpenWrt és una plataforma molt oberta i infinitament personalitzable, i això fa que per un usuari normal sigui un sistema complicat i costós de configurar, sobretot si es vol fer mitjançant línia de comandes o si s’hi volen aplicar mòduls complexos com ara OOR. Aquesta automatització facilita molt la posada en marxa del multihoming i d’OOR, requerint una interacció mínima per part de l’usuari.\\
+\\
+L'objectiu del projecte era precisament fer d'aquesta configuració una tasca trivial per part de l'usuari, i es pot afirmar que s'ha complert amb l'objectiu. La primera part de la configuració es fa de manera totalment transparent, i la part de configuració web s'ha pogut simplificar al màxim demanant només la introducció d'uns quants paràmetres.\\
 
 \section{Feina futura}
 La principal feina a fer és solucionar els detalls que no han permès la correcta execució del multihoming al model Linksys WRT1200AC.\\
 \\
-Mentre aquest projecte s'estava duent a terme, una part de la comunitat d'OpenWrt va crear un \textit{fork} del sistema operatiu degut a desavinences amb l'equip principal de desenvolupament. Al seu projecte l'han anomenat LEDE (Linux Embedded Development Environment), i sembla que també l'enfocaran a altres tipus de dispositius inscrustats i no només a routers i modems.\\
+Mentre aquest projecte s'estava duent a terme, una part de la comunitat d'OpenWrt va crear un \textit{fork} del sistema operatiu degut a desavinences amb l'equip principal de desenvolupament. Al seu projecte l'han anomenat LEDE (Linux Embedded Development Environment), i sembla que també l'enfocaran a altres tipus de dispositius inscrustats i no només a routers i modems\cite{lede16}.\\
 \\
 Durant una reunió amb l'equip d'OOR es va proposar crear un binari d'instal·lació similar al ja generat, però utilitzant LEDE com a base. El binari s'ha compilat i preparat, però no s'ha pogut provar a cap dels dos routers utilitzats. La següent feina a dur a terme, per tant, seria comprovar que aquesta imatge també funciona i també configura la funció de multihoming correctament.
 
-\section{Conclusions}
-OpenWrt és una plataforma molt oberta i infinitament personalitzable, i això fa que per un usuari normal sigui un sistema complicat i costós de configurar, sobretot si es vol fer mitjançant línia de comandes o si s’hi volen aplicar mòduls complexos com ara OOR. Aquesta automatització facilita molt la posada en marxa del multihoming i d’OOR, requerint una interacció mínima per part de l’usuari.
+
+\begin{thebibliography}{9}
+
+\bibitem{dino13}
+  D. Farinacci,
+  \emph{The Locator/ID Separation Protocol (LISP)},
+  https://tools.ietf.org/html/rfc6830.
+  2013.
+\bibitem{open16}
+  OpenWrt Community,
+  \emph{About OpenWrt},
+  https://wiki.openwrt.org/about/start.
+  2016.
+\bibitem{alberto15}
+  A. Rodríguez, M. Portoles, V. Ermagan, D. Lewis, D. Farinacci, F. Maino,A. Cabellos,
+  \emph{LISP: A southbound SDN protocol?},
+  http://upcommons.upc.edu/bitstream/handle/2117/81901/lisp\_sdn.pdf.
+  2015.
+\bibitem{freitas15}
+  S. Freitas, P. Bellagamba, N. Masterson,
+  \emph{Preserving IP addresses during DC  migration with LISP and ASR 1000},
+  http://lisp.cisco.com/docs/LISP\_DC\_Migration\_Whitepaper.pdf.
+  2015.
+\bibitem{cisco15}
+  Cisco Systems,
+  \emph{Optimizing Ingress Routing with LISP across Multiple VXLAN/EVPN Sites.},
+  http://lisp.cisco.com/docs/white-paper-c11-734843.pdf.
+  2015.
+\bibitem{albert09}
+  A. Rodríguez, M. Portoles, V. Ermagan, D. Lewis, D. Farinacci, F. Maino,A. Cabellos,
+  \emph{Supporting Mobility in LISP.},
+  http://www.ac.upc.edu/app/research-reports/html/2009/55/mobility\_lisp.pdf
+  2009.
+\bibitem{alberts15}
+  A. Rodríguez,
+  \emph{What is OOR?.},
+	https://github.com/OpenOverlayRouter/oor/wiki.
+	2009.
+\bibitem{opens16}
+  OpenWrt Community,
+  \emph{Table of Hardware.},
+	https://wiki.openwrt.org/toh/start.
+	2016.
+\bibitem{uci16}
+  OpenWrt Community,
+  \emph{The UCI System.},
+	https://wiki.openwrt.org/doc/uci.
+	2016.
+\bibitem{lede16}
+  LEDE Community,
+  \emph{About the LEDE Project.},
+	https://www.lede-project.org/about.html.
+	2016.
+	
+\end{thebibliography}
 
 \end{document}
