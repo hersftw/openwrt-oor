@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.6.22)  23 JUN 2016 13:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.6.22)  23 JUN 2016 18:56
 entering extended mode
 **./memoria.tex
 (memoria.tex
@@ -727,352 +727,339 @@ o-cu-men-tar el pro-jec-te i fi-nal-ment presentar-
 File: imatges/multihoming.jpg Graphic file (type jpg)
 
 <use imatges/multihoming.jpg>
-Package pdftex.def Info: imatges/multihoming.jpg used on input line 150.
+Package pdftex.def Info: imatges/multihoming.jpg used on input line 151.
 (pdftex.def)             Requested size: 261.37584pt x 243.91064pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--156
+
+ []
 
 <imatges/lisp.png, id=43, 898.35625pt x 674.52pt>
 File: imatges/lisp.png Graphic file (type png)
  <use imatges/lisp.png>
-Package pdftex.def Info: imatges/lisp.png used on input line 164.
+Package pdftex.def Info: imatges/lisp.png used on input line 167.
 (pdftex.def)             Requested size: 398.33858pt x 299.0849pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--175
+Underfull \hbox (badness 10000) in paragraph at lines 158--179
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--175
+Underfull \hbox (badness 10000) in paragraph at lines 158--179
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--175
+Underfull \hbox (badness 10000) in paragraph at lines 158--179
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--175
+Underfull \hbox (badness 10000) in paragraph at lines 158--179
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--175
+Underfull \hbox (badness 10000) in paragraph at lines 158--179
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--179
 
  []
 
 [3 <./imatges/multihoming.jpg>] [4 <./imatges/lisp.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 177--182
+Underfull \hbox (badness 10000) in paragraph at lines 181--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--182
+Underfull \hbox (badness 10000) in paragraph at lines 181--186
 
  []
 
-[5] [6] [7] [8] [9] <imatges/gantt1.jpg, id=66, 841.34325pt x 253.54726pt>
+[5] [6] [7] [8] [9] [10]
+<imatges/gantt1.jpg, id=69, 841.34325pt x 253.54726pt>
 File: imatges/gantt1.jpg Graphic file (type jpg)
 
 <use imatges/gantt1.jpg>
-Package pdftex.def Info: imatges/gantt1.jpg used on input line 285.
+Package pdftex.def Info: imatges/gantt1.jpg used on input line 289.
 (pdftex.def)             Requested size: 398.33858pt x 120.04543pt.
- [10 <./imatges/gantt1.jpg>]
-Overfull \hbox (45.72644pt too wide) in paragraph at lines 307--369
+ [11 <./imatges/gantt1.jpg>]
+Overfull \hbox (45.72644pt too wide) in paragraph at lines 311--373
  [] 
  []
 
 
-Overfull \hbox (28.41931pt too wide) in paragraph at lines 307--369
+Overfull \hbox (28.41931pt too wide) in paragraph at lines 311--373
  [] 
  []
 
-[11]
+[12]
 Overfull \vbox (5.36916pt too high) has occurred while \output is active []
 
 
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 370--375
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 374--379
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 370--375
+Underfull \hbox (badness 10000) in paragraph at lines 374--379
 
  []
 
-[13] [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 475--480
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 475--480
-
- []
-
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 489--492
+[14] [15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 479--484
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 494--498
+Underfull \hbox (badness 10000) in paragraph at lines 479--484
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 506--512
+Underfull \hbox (badness 10000) in paragraph at lines 493--496
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 506--512
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 506--512
+Underfull \hbox (badness 10000) in paragraph at lines 498--502
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 549--553
+Underfull \hbox (badness 10000) in paragraph at lines 510--516
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 549--553
+Underfull \hbox (badness 10000) in paragraph at lines 510--516
 
  []
 
-[19] ("C:\Program Files\MiKTeX2.9\tex\latex\listings\lstlang1.sty"
+
+Underfull \hbox (badness 10000) in paragraph at lines 510--516
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 553--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 553--557
+
+ []
+
+[20] ("C:\Program Files\MiKTeX2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-Underfull \hbox (badness 10000) in paragraph at lines 615--617
+Underfull \hbox (badness 10000) in paragraph at lines 619--621
 
  []
 
-[20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 666--668
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 686--690
+[21] [22]
+Underfull \hbox (badness 10000) in paragraph at lines 670--672
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 686--690
-
- []
-
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 701--707
+Underfull \hbox (badness 10000) in paragraph at lines 690--694
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 701--707
+Underfull \hbox (badness 10000) in paragraph at lines 690--694
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 705--711
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 701--707
-
- []
-
-[23] [24]
-Underfull \hbox (badness 10000) in paragraph at lines 800--806
+Underfull \hbox (badness 10000) in paragraph at lines 705--711
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--806
+Underfull \hbox (badness 10000) in paragraph at lines 705--711
+
+ []
+
+[24] [25]
+Underfull \hbox (badness 10000) in paragraph at lines 804--810
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--806
-
- []
-
-[25] [26]
-Underfull \hbox (badness 10000) in paragraph at lines 885--891
+Underfull \hbox (badness 10000) in paragraph at lines 804--810
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 885--891
+Underfull \hbox (badness 10000) in paragraph at lines 804--810
+
+ []
+
+[26] [27]
+Underfull \hbox (badness 10000) in paragraph at lines 889--895
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 885--891
-
- []
-
-[27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 956--960
+Underfull \hbox (badness 10000) in paragraph at lines 889--895
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 956--960
+Underfull \hbox (badness 10000) in paragraph at lines 889--895
 
  []
 
-[29]
-Overfull \hbox (2.2307pt too wide) in paragraph at lines 985--986
-[][][][][][][][][][][][][][][][][][][][][][][] 
+[28] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 960--964
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 960--964
+
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 1021--1023
+Overfull \hbox (2.2307pt too wide) in paragraph at lines 989--990
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 1025--1027
 
  []
 
-[31] <imatges/luci1.png, id=137, 159.59625pt x 259.97125pt>
+[32] <imatges/luci1.png, id=140, 159.59625pt x 259.97125pt>
 File: imatges/luci1.png Graphic file (type png)
 
 <use imatges/luci1.png>
-Package pdftex.def Info: imatges/luci1.png used on input line 1037.
+Package pdftex.def Info: imatges/luci1.png used on input line 1041.
 (pdftex.def)             Requested size: 119.69687pt x 194.97795pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1033--1040
+Underfull \hbox (badness 10000) in paragraph at lines 1037--1044
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1041--1042
+Underfull \hbox (badness 10000) in paragraph at lines 1045--1046
 
  []
 
-<imatges/luci2.png, id=138, 953.5625pt x 780.9175pt>
+<imatges/luci2.png, id=141, 953.5625pt x 780.9175pt>
 File: imatges/luci2.png Graphic file (type png)
  <use imatges/luci2.png>
-Package pdftex.def Info: imatges/luci2.png used on input line 1045.
+Package pdftex.def Info: imatges/luci2.png used on input line 1049.
 (pdftex.def)             Requested size: 426.79134pt x 349.52692pt.
 
-Overfull \hbox (8.53766pt too wide) in paragraph at lines 1045--1046
+Overfull \hbox (8.53766pt too wide) in paragraph at lines 1049--1050
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[32 <./imatges/luci1.png>] [33 <./imatges/luci2.png>] [34]
-Underfull \hbox (badness 10000) in paragraph at lines 1081--1084
+[33 <./imatges/luci1.png>] [34 <./imatges/luci2.png>] [35]
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1088
 
  []
 
-<imatges/man1.png, id=148, 352.31625pt x 540.0175pt>
+<imatges/man1.png, id=151, 352.31625pt x 540.0175pt>
 File: imatges/man1.png Graphic file (type png)
  <use imatges/man1.png>
-Package pdftex.def Info: imatges/man1.png used on input line 1087.
+Package pdftex.def Info: imatges/man1.png used on input line 1091.
 (pdftex.def)             Requested size: 140.924pt x 216.00316pt.
 
-<imatges/man2.png, id=149, 418.56375pt x 227.85126pt>
+<imatges/man2.png, id=152, 418.56375pt x 227.85126pt>
 File: imatges/man2.png Graphic file (type png)
  <use imatges/man2.png>
-Package pdftex.def Info: imatges/man2.png used on input line 1094.
+Package pdftex.def Info: imatges/man2.png used on input line 1098.
 (pdftex.def)             Requested size: 209.28136pt x 113.92534pt.
 
-<imatges/man3.png, id=150, 712.6625pt x 68.255pt>
+<imatges/man3.png, id=153, 712.6625pt x 68.255pt>
 File: imatges/man3.png Graphic file (type png)
  <use imatges/man3.png>
-Package pdftex.def Info: imatges/man3.png used on input line 1102.
+Package pdftex.def Info: imatges/man3.png used on input line 1106.
 (pdftex.def)             Requested size: 356.33038pt x 34.12741pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1091--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1095--1109
 
  []
 
-[35 <./imatges/man1.png> <./imatges/man2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1109--1112
+[36 <./imatges/man1.png> <./imatges/man2.png>]
+<imatges/linksys.jpg, id=158, 330.63525pt x 224.037pt>
+File: imatges/linksys.jpg Graphic file (type jpg)
 
- []
+<use imatges/linksys.jpg>
+Package pdftex.def Info: imatges/linksys.jpg used on input line 1113.
+(pdftex.def)             Requested size: 330.63445pt x 224.03644pt.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1114--1117
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1114--1117
+Underfull \hbox (badness 10000) in paragraph at lines 1119--1122
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1119--1124
+Underfull \hbox (badness 10000) in paragraph at lines 1124--1127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1119--1124
+Underfull \hbox (badness 10000) in paragraph at lines 1124--1127
 
  []
 
-[36 <./imatges/man3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1129--1133
-[]\OT1/cmr/m/n/10.95 D. Fa-ri-nac-ci, \OT1/cmr/m/it/10.95 The Lo-ca-tor/ID Se-p
-a-ra-ti-on Pro-to-col (LISP)\OT1/cmr/m/n/10.95 ,
+[37 <./imatges/man3.png> <./imatges/linksys.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 1129--1134
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1139--1143
-[]\OT1/cmr/m/n/10.95 A. Rodrguez, M. Por-to-les, V. Er-ma-gan, D. Lewis, D. F
-a-ri-nac-
+Underfull \hbox (badness 10000) in paragraph at lines 1129--1134
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1139--1143
-\OT1/cmr/m/n/10.95 ci, F. Mai-no,A. Ca-be-llos, \OT1/cmr/m/it/10.95 LISP: A sou
-th-bound SDN pro-to-col?\OT1/cmr/m/n/10.95 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1144--1148
-[]\OT1/cmr/m/n/10.95 S. Frei-tas, P. Be-lla-gam-ba, N. Mas-ter-son, \OT1/cmr/m/
-it/10.95 Pre-ser-ving IP ad-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1144--1148
-\OT1/cmr/m/it/10.95 dres-ses du-ring DC mi-gra-ti-on with LISP and ASR 1000\OT1
-/cmr/m/n/10.95 ,
- []
-
-
-Underfull \hbox (badness 2035) in paragraph at lines 1149--1153
+Underfull \hbox (badness 2035) in paragraph at lines 1159--1163
 []\OT1/cmr/m/n/10.95 Cisco Sys-tems, \OT1/cmr/m/it/10.95 Op-ti-mi-zing In-gress
  Rou-ting with LISP across Mul-ti-ple VX-
  []
 
-
-Underfull \hbox (badness 1400) in paragraph at lines 1154--1158
-[]\OT1/cmr/m/n/10.95 A. Rodrguez, M. Por-to-les, V. Er-ma-gan, D. Lewis, D. F
-a-ri-nac-ci, F. Mai-
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 1169--1173
+[]\OT1/cmr/m/n/10.95 Open Over-lay Rou-ter Com-mu-nity, \OT1/cmr/m/it/10.95 Wha
+t is OOR?.\OT1/cmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 1164--1168
+Underfull \hbox (badness 1142) in paragraph at lines 1174--1178
 []\OT1/cmr/m/n/10.95 OpenWrt Com-mu-nity, \OT1/cmr/m/it/10.95 Ta-ble of Hardwa-
 re.\OT1/cmr/m/n/10.95 , https://wiki.openwrt.org/toh/start.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1174--1178
+Underfull \hbox (badness 10000) in paragraph at lines 1184--1188
 []\OT1/cmr/m/n/10.95 LEDE Com-mu-nity, \OT1/cmr/m/it/10.95 About the LE-DE Pro-
 ject.\OT1/cmr/m/n/10.95 , https://www.lede-
  []
 
-[37] (memoria.aux) ) 
+[39] (memoria.aux) ) 
 Here is how much of TeX's memory you used:
- 5909 strings out of 493335
- 82869 string characters out of 3139690
- 199855 words of memory out of 3000000
- 9349 multiletter control sequences out of 15000+200000
+ 5914 strings out of 493335
+ 82975 string characters out of 3139690
+ 198858 words of memory out of 3000000
+ 9353 multiletter control sequences out of 15000+200000
  11700 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,12n,43p,882b,1798s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1085,9 +1072,9 @@ s/MiKTeX2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX2.
 e1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX2.9/fonts/type1/public
 /amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX2.9/fonts/type1/public/amsfonts
 /cm/cmti12.pfb>
-Output written on memoria.pdf (44 pages, 613243 bytes).
+Output written on memoria.pdf (46 pages, 644870 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
+ 199 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
