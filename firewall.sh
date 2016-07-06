@@ -4,6 +4,8 @@
 # First we will create a backup for the firewall file
 cp /etc/config/firewall /etc/config/firewall_backup
 
+uci set firewall.defaults.forward='ACCEPT'
+
 # After that we create a zone for the new WAN interface
 uci add firewall zone
 uci set firewall.@zone[-1].name='lan2'
