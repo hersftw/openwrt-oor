@@ -1,5 +1,4 @@
-# openwrt-oor
-Practical home multihoming with OpenWrt and Open Overlay Router
+# Practical home multihoming with OpenWrt and Open Overlay Router
 
 Bachelor thesis using LISP and OOR
 
