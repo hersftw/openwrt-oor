@@ -1,4 +1,4 @@
-m = Map("oor", "OOR Configuration") -- We want to edit the uci config file /etc/config/lispd
+m = Map("oor", "OOR Configuration") -- We want to edit the uci config file /etc/config/oor
 
 s = m:section(TypedSection, "map-resolver", translate("Map Resolver"))
 s.addremove = false
