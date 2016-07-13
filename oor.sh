@@ -15,19 +15,21 @@ uci set oor.@rloc-set[0].rloc_name='rloc_1'
 uci add_list oor.@rloc-set[0].rloc_name='rloc_2'
 
 # RLOC addresses
-uci add oor rloc-iface
+#uci add oor rloc-iface
+uci set oor.wan1='rloc_iface'
 uci set oor.@rloc-iface[-1].name='rloc_1'
 uci set oor.@rloc-iface[-1].interface='eth1'
 uci set oor.@rloc-iface[-1].ip_version='4'
 uci set oor.@rloc-iface[-1].priority='1'
-uci set oor.@rloc-iface[-1].weight='100'
+uci set oor.@rloc-iface[-1].weight='50'
 
-uci add oor rloc-iface
+#uci add oor rloc-iface
+uci set oor.wan2='rloc_iface'
 uci set oor.@rloc-iface[-1].name='rloc_2'
 uci set oor.@rloc-iface[-1].interface='eth0.2'
 uci set oor.@rloc-iface[-1].ip_version='4'
 uci set oor.@rloc-iface[-1].priority='1'
-uci set oor.@rloc-iface[-1].weight='200'
+uci set oor.@rloc-iface[-1].weight='50'
 
 uci commit oor
 
