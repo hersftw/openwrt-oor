@@ -3,19 +3,18 @@
 
 # TODO: Copy the example file to /etc/config/oor
 
-# General configuration
+# Set the operating mode to xTR
 uci set oor.@daemon[0].operating_mode='xTR'
 
-# xTR configuration
+# Assign the EID prefix to an RLOC set
 uci set oor.@database-mapping[0].rloc_set='external_ifs'
 
-#Miscellaneous configuration
+# Create the two needed RLOC interfaces
 uci set oor.@rloc-set[0].name='external_ifs'
 uci set oor.@rloc-set[0].rloc_name='rloc_1'
 uci add_list oor.@rloc-set[0].rloc_name='rloc_2'
 
-# RLOC addresses
-#uci add oor rloc-iface
+# Assign the first RLOC interface to WAN port
 uci set oor.wan1='rloc_iface'
 uci set oor.@rloc-iface[-1].name='rloc_1'
 uci set oor.@rloc-iface[-1].interface='eth0'
@@ -23,7 +22,7 @@ uci set oor.@rloc-iface[-1].ip_version='4'
 uci set oor.@rloc-iface[-1].priority='1'
 uci set oor.@rloc-iface[-1].weight='50'
 
-#uci add oor rloc-iface
+# Assign the second RLOC interface to WAN2 port
 uci set oor.wan2='rloc_iface'
 uci set oor.@rloc-iface[-1].name='rloc_2'
 uci set oor.@rloc-iface[-1].interface='eth1.3'
@@ -31,6 +30,10 @@ uci set oor.@rloc-iface[-1].ip_version='4'
 uci set oor.@rloc-iface[-1].priority='1'
 uci set oor.@rloc-iface[-1].weight='50'
 
-uci commit oor
+# Add default values for Proxy-ETR
+uci set oor.@proxy-etr[0].priority='1'
+uci set oor.@proxy-etr[0].weight='1'
 
+# Save the changes and reload the service
+uci commit oor
 /etc/init.d/oor reload

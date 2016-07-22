@@ -24,4 +24,10 @@ s = m:section(TypedSection, "rloc-iface", "Multihoming Interfaces")
 	it:value("2", "Backup")
    s:option(Value, "weight", "Load Balancing", "Weight of IPv4 locator of the interface for this EID. When priorities are the same for multiple RLOCs, the Weight indicates how to balance unicast traffic between them [0-255]")
 
+s = m:section(TypedSection, "proxy-etr", "Proxy-ETR")
+   s.addremove = false
+   s.anonymous = true
+   s:option(Value, "address", "Proxy-ETR Address", "IPv4 or IPv6 network address of the Proxy-ETR / prefix length : x.x.x.x/x | y:y:y:y::y/y. Packets addressed to non-LISP sites will be encapsulated to this address")
+
+
 return m -- Returns the map
