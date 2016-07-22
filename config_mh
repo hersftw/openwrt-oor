@@ -1,5 +1,5 @@
 #!/bin/sh
-#sh /scripts/config.sh
+# This script runs the basic configuration only on first boot
 FLAG="/scripts/firstboot.log"
 if [ ! -f $FLAG ]; then
 	sh /scripts/config.sh
